@@ -1,0 +1,274 @@
+<!-- Insert a node at the Head -->
+
+
+const LinkedListNode = class {
+    constructor(nodeData) {
+        this.data = nodeData;
+        this.next = null;
+    }
+};
+
+// Complete the function below
+
+function insertNodeAtHead(head, data) {
+    
+    let temp = new LinkedListNode(data)
+    temp.next = head
+    head = temp
+    return head ;
+}
+
+
+<!-- Palindrome List -->
+
+const LinkedListNode = class {
+    constructor(nodeData) {
+        this.data = nodeData;
+        this.next = null;
+    }
+};
+// Complete the function below
+var isPalindrome = function (head) {
+    var curr = head;
+    var flag = true;
+    var stack = [];
+  
+    while (curr !== null) {
+        stack.push(curr.data);
+        curr = curr.next;
+    }
+    while (head !== null) {
+        var i = stack.pop();
+        if (head.data == i) {
+            flag = true;
+        }else{
+            flag = false;
+            break;
+        }
+        head = head.next;
+    }
+    return flag;
+};
+
+
+<!-- Insert a node at the Tail -->
+
+const LinkedListNode = class {
+    constructor(nodeData) {
+        this.data = nodeData;
+        this.next = null;
+    }
+};
+
+// Complete the function below
+
+function insertNodeAtTail(head, data) {
+    let temp = new LinkedListNode(data);
+  if(head === null){
+      head = temp
+      return head ;
+  }  
+  else{
+      let curr = head;
+      while(curr.next!==null){
+          curr = curr.next;
+      }
+      curr.next = temp;
+      return head;
+  }  
+}
+
+<!-- Insert at a specific position-->
+
+
+const LinkedListNode = class {
+    constructor(nodeData) {
+        this.data = nodeData;
+        this.next = null;
+    }
+};
+
+// Complete the function below
+
+function insertNodeAtPosition(head, data, position) {
+    let temp = new LinkedListNode(data);
+    if(position === 0){
+        let curr = head
+        head = temp
+        head.next = curr
+        return head
+    }
+    let curr = head
+    for(let i=0 ;i<position-1 ;i++){
+        curr =curr.next
+    }
+    let s=curr.next
+    curr.next = temp
+    temp.next = s
+    return head
+}
+
+<!-- Deleting a Node --!>
+
+
+
+    const LinkedListNode = class {
+        constructor(nodeData) {
+            this.data = nodeData;
+            this.next = null;
+        }
+    };
+    
+    // Complete the function below
+    
+    function deleteNode(head, position) {
+        let prev = null;
+        let cur = head;
+        let i = 0;
+        
+        if(position===0){
+            head=head.next;
+        }else{
+            while(position!==i){
+                i++
+                prev=cur;
+                cur=cur.next;
+            }
+            
+            if(cur!==null){
+                prev.next=cur.next;
+            }
+        }
+        return head;
+    }
+
+
+    <!-- Middle Node -->
+
+    const LinkedListNode = class {
+        constructor(nodeData) {
+            this.data = nodeData;
+            this.next = null;
+        }
+    };
+    
+    var middleNode = function(head) {
+        let curr = head
+        let i=0
+        while (curr.next !== null) {
+            curr = curr.next
+            i = i+1
+        }
+        let j = 0
+        while (j < i/2) {
+            head = head.next
+            j = j + 1
+        }
+        return head.data
+    };
+
+    
+    <!-- Reverse the Linked List -->
+
+    const LinkedListNode = class {
+        constructor(nodeData) {
+            this.data = nodeData;
+            this.next = null;
+        }
+    }
+    
+    // Complete the function below
+    
+    function reverse(head) {
+        let prev = null;
+        let current = head;
+        let next = null;
+            while (current !== null) {
+                next = current.next;
+                current.next = prev;
+                prev = current;
+                current = next;
+            }
+            head = prev;
+            return head;
+        }
+        function printList(head) {
+            while (head !== null) {
+                console.log(head.data + " ");
+                head = head.next;
+            }
+    }
+
+    <!-- Linked List Cycle -->
+
+
+const LinkedListNode = class {
+    constructor(nodeData) {
+        this.data = nodeData;
+        this.next = null;
+    }
+};
+// Complete the function below
+var hasCycle = function(head) {
+    var s = new Set();
+    while (head !== null) {
+        if (s.has(head))
+            return true;
+        s.add(head);
+        head = head.next;
+        }
+    return false;
+};
+
+
+
+<!-- Delete node without head -->
+
+
+const LinkedListNode = class {
+    constructor(nodeData) {
+        this.data = nodeData;
+        this.next = null;
+    }
+};
+// Complete the function below
+function deleteNode(node){
+        var temp = node.next;
+        node.data = temp.data;
+        node.next = temp.next;
+        let bag ;
+        
+        while(node !==null){
+           bag += node.data + " "
+           node = node.next
+        }
+        return bag ;
+    }
+
+
+
+    <!-- Nth node from the end -->
+
+
+    const LinkedListNode = class {
+        constructor(nodeData) {
+            this.data = nodeData;
+            this.next = null;
+        }
+    };
+    
+    function nth_node(head,n){
+        let k = 0;
+        let curr = head;
+        while (curr !== null){
+            curr = curr.next;
+            k++;
+        }
+        if (k >= n){
+        curr = head;
+            for (let i=0; i<k-n; i++) {
+            curr = curr.next;
+            }
+        }
+        return curr.data;
+    }
